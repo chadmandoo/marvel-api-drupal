@@ -1,0 +1,6 @@
+name: Marvel API
+type: module
+description: 'Marvel API Connector'
+core: 8.x
+package: 'Marvel'
+configure: marvel_api.settings

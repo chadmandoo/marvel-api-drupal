@@ -1,0 +1,21 @@
+marvel_api.settings:
+  path: '/admin/config/services/marvel_api'
+  defaults:
+    _form: '\Drupal\marvel_api\Form\MarvelApiConfigurationForm'
+    _title: 'Marvel API Settings'
+  requirements:
+    _permission: 'administer marvel api settings'
+marvel_api.import:
+  path: 'admin/marvel-api-import'
+  defaults:
+    _form:  '\Drupal\marvel_api\Form\MarvelApiImporter'
+    _title: 'Marvel API Importer'
+  requirements:
+    _permission: 'import marvel api entities'
+marvel_api.api_controller_index:
+  path: '/marvel-api/comics'
+  defaults:
+    _controller: '\Drupal\marvel_api\Controller\ApiController::comics'
+    _title: 'index'
+  requirements:
+    _permission: 'access content'

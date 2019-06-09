@@ -1,0 +1,8 @@
+administer marvel api settings:
+  title: 'Administer Marvel API Settings'
+  description: 'Ability to administer API settings.'
+  restrict access: TRUE
+import marvel api entities:
+  title: 'Importer Marvel API Entities'
+  description: 'Ability to import Marvel API Entities'
+  restrict access: TRUE

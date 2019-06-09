@@ -1,0 +1,8 @@
+marvel_api.settings:
+  route_name: marvel_api.settings
+  title: 'Marvel API Settings'
+  base_route: marvel_api.settings
+marvel_api_import:
+  route_name: marvel_api.import
+  title: 'Marvel API Importer'
+  base_route: marvel_api.settings

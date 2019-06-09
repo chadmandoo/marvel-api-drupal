@@ -1,0 +1,5 @@
+services:
+  marvel_api.commands:
+    class: \Drupal\marvel_api\Commands\MarvelApiCommands
+    tags:
+      - { name: drush.command }

@@ -1,0 +1,5 @@
+marvel_api.settings:
+                title: 'Marvel API Settings'
+                parent: system.admin_config_services
+                description: 'Configure the Marvel API'
+                route_name: marvel_api.settings

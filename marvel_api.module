@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Contains marvel_api.module.
+ */
+
+/**
+ * Implements hook_entity_extra_field_info().
+ */
+function marvel_api_entity_extra_field_info() {
+  foreach (\Drupal\node\Entity\NodeType::loadMultiple() as $bundle) {
+    $extra['node'][$bundle->Id()]['display']['marvel_image'] = array(
+      'label' => t('Marvel Image'),
+      'description' => t('Marvel Image Pseudo Field'),
+      'weight' => 100,
+      'visible' => TRUE,
+    );
+  }
+  return $extra;
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function marvel_api_node_view(array &$build, \Drupal\Core\Entity\EntityInterface $entity, \Drupal\Core\Entity\Display\EntityViewDisplayInterface $display, $view_mode) {
+  if ($display->getComponent('marvel_image')) {
+
+    $image_src = $entity->get('field_thumbnail')->getString() . '.' . $entity->get('field_thumbnail_extension')->getString();
+
+    $build['marvel_image'] = [
+      '#type' => 'markup',
+      '#markup' => '<img class="marvel-image" src="' . $image_src . '" />',
+    ];
+  }
+}
+
+/**
+ * Deletes all nodes of a certain type.
+ *
+ * @param $type
+ *
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function marvel_delete_nodes($type) {
+  $ent = \Drupal::service('eqd')
+    ->create()
+    ->getStorage('node')
+    ->findBy(['type' => $type])
+    ->ids();
+
+  foreach ($ent as $e) {
+    $node = \Drupal\node\Entity\Node::load($e);
+    $node->delete();
+  }
+}
+
